@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getActiveUser } from './selectors';
+import { setActiveUser } from './store'; // Импортируем сгенерированный экшен
+import { getActiveUser } from './selectors'; // Обновите селектор, если необходимо
 
 const App = () => {
+  // Используем селектор для получения активного пользователя из состояния
   const activeUser = useSelector(getActiveUser);
   const dispatch = useDispatch();
   const [counter, setCounter] = useState(0);
 
   const handleClick = () => {
     setCounter(counter + 1);
-    dispatch({ type: 'SET_ACTIVE_USER', payload: 1});
+    // Диспатчим экшен, сгенерированный `createSlice`
+    dispatch(setActiveUser(1)); // Устанавливаем активного пользователя с id 1
   };
 
   return (
