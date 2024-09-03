@@ -1,8 +1,12 @@
-// selectors.js
+import { createSelector } from 'reselect';
+
 export const getUsers = (state) => state.users;
 export const getActiveUserId = (state) => state.activeUserId;
 
-export const getActiveUser = (state) => {
-  console.log('Calculating active user...');
-  return state.users.find(user => user.id === state.activeUserId);
-};
+export const getActiveUser = createSelector(
+  [getUsers, getActiveUserId],
+  (users, activeUserId) => {
+    console.log('Calculating active user...');
+    return users.find(user => user.id === activeUserId);
+  }
+);

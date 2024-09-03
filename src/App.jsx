@@ -9,7 +9,7 @@ const App = () => {
 
   const handleClick = () => {
     setCounter(counter + 1);
-    dispatch({ type: 'SET_ACTIVE_USER', payload: Math.floor(Math.random() * 10000) });
+    dispatch({ type: 'SET_ACTIVE_USER', payload: 1});
   };
 
   return (
